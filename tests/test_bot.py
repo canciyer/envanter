@@ -24,3 +24,17 @@ def test_empty_catalog_warning():
     text = render_report(report)
     assert "kataloqu boşdur" in text
     assert "bütün Mythic" in text
+
+
+def test_empty_catalog_does_not_claim_zero_mythics():
+    report = ScanReport(65, 5, (), 0)
+    output = render_report(report)
+    assert "qiymətləndirilməyib" in output
+    assert "Təsdiqlənmiş Mythic" not in output
+
+
+def test_nonempty_catalog_zero_is_scoped():
+    report = ScanReport(65, 5, (), 1)
+    output = render_report(report)
+    assert "Təsdiqlənmiş Mythic (kataloq üzrə)" in output
+    assert "bütün Mythic" in output
