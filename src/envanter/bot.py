@@ -32,7 +32,7 @@ def render_report(report: ScanReport, *, custom_emoji: bool = False) -> str:
         f"📹 Yoxlanan kadrlar: {report.frames_examined}",
         ("⚠️ Mythic sayı: qiymətləndirilməyib (etalon kataloqu boşdur)"
          if report.catalog_size == 0 else
-         f"✅ Kataloq üzrə təsdiqlənmiş Mythic: <b>{report.confirmed_mythics}</b>"),
+         f"✅ Təsdiqlənmiş Mythic (kataloq üzrə): <b>{report.confirmed_mythics}</b>"),
         "",
     ]
     if report.confirmed:
