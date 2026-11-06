@@ -30,7 +30,9 @@ def render_report(report: ScanReport, *, custom_emoji: bool = False) -> str:
     lines = [
         "<b>🎮 PUBG Mobile — inventar analizi</b>",
         f"📹 Yoxlanan kadrlar: {report.frames_examined}",
-        f"✅ Təsdiqlənmiş Mythic əşya: <b>{report.confirmed_mythics}</b>",
+        ("⚠️ Mythic sayı: qiymətləndirilməyib (etalon kataloqu boşdur)"
+         if report.catalog_size == 0 else
+         f"✅ Kataloq üzrə təsdiqlənmiş Mythic: <b>{report.confirmed_mythics}</b>"),
         "",
     ]
     if report.confirmed:
